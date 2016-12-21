@@ -1,0 +1,27 @@
+
+<h2>Search our inventory</h2>
+<input ng-model="searchArg" />
+<h2>Search our inventory for a specific make</h2>
+<select ng-model="selected" ng-options="y.name for (x, y) in c.carMakes" ng-change="filterByMake(c.carMakes.Id)"></select>
+
+<table border="1">
+    <caption>Here are the cars in our inventory right now:</caption>
+    <thead>
+        <tr>
+            <td></td>
+            <td>Description</td>                
+            <td>Photo</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="car in c.cars | filter:searchArg">
+            <td>
+                <button ng-click="c.openDialog(car.id)">Show Me More</button>
+            </td>
+            <td>{{car.shortDescription}}</td>
+            <td><img height="100" width="150" ng-src="{{car.imageUrl}}" /></td>
+        </tr>
+    </tbody>
+</table>
+    
+
